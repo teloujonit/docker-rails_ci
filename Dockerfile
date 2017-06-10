@@ -1,4 +1,4 @@
-FROM ruby:2.4-slim
+FROM ruby:2.4.1-slim
 MAINTAINER Louis T. <louis@negonicrac.com>
 
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
