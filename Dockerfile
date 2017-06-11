@@ -2,57 +2,49 @@ FROM ruby:2.4.1-slim
 MAINTAINER Louis T. <louis@negonicrac.com>
 
 # Install build dependencies
-RUN apt-get update && apt-get install -qq -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential \
       curl \
-      git
+      git \
+    && rm -rf /var/lib/apt/lists/*
 
 # Ensure communication with PostgreSQL (libpq-dev)
-RUN apt-get update && apt-get install -qq -y --no-install-recommends \
-      libpq-dev
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js
+# Install PhantomJS dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libfontconfig \
+    libfreetype6 \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install PhantomJS
+ENV PHANTOMJS_VERSION=2.1.1
+RUN curl -sL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 | tar -xj
+RUN mv phantomjs-$PHANTOMJS_VERSION-linux-x86_64 /opt/phantomjs-$PHANTOMJS_VERSION
+RUN ln -s /opt/phantomjs-$PHANTOMJS_VERSION /opt/phantomjs \
+    && ln -s /opt/phantomjs/bin/phantomjs /usr/local/bin/phantomjs \
+    && phantomjs -v
+
+# Add Node.js repository
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
-RUN apt-get install -y --no-install-recommends \
-      nodejs
 
-# Add Yarn repository
+# Add Yarn repository: https://yarnpkg.com/en/docs/install
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
       tee /etc/apt/sources.list.d/yarn.list
 
-# Install Yarn: https://yarnpkg.com/en/docs/install
+# Install Yarn and Node.js
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      yarn
-
-# Install PhantomJS dependencies
-RUN apt-get install -y --no-install-recommends \
-    libfontconfig \
-    libfreetype6
-
-# Install PhantomJS
-RUN curl -sL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 | tar -xj \
-    && mv phantomjs-2.1.1-linux-x86_64 /opt/phantomjs-2.1.1 \
-    && ln -s /opt/phantomjs-2.1.1 /opt/phantomjs \
-    && ln -s /opt/phantomjs/bin/phantomjs /usr/local/bin/phantomjs \
+      nodejs \
+      yarn \
+    && apt-get purge -y --auto-remove curl \
     && apt-get autoremove -yqq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    # Checking if phantom works
-    && phantomjs -v
-
-# Install Nokogiri dependencies
-RUN apt-get install -y --no-install-recommends \
-    libxml2 \
-    libxslt
-
-RUN ruby -v
-RUN gem update
-RUN gem install nokogiri
-RUN gem install capybara
-RUN gem install poltergeist
-RUN gem install pry
-RUN gem install rspec
 
 # Install deployment tools
 RUN gem install dpl
+
+RUN ruby -v
