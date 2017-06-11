@@ -42,8 +42,6 @@ RUN apt-get update \
         yarn \
     \
     # cleanup
-    && apt-get purge -y --auto-remove \
-      curl \
     && apt-get autoremove -yqq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
