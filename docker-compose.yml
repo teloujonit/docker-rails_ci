@@ -6,7 +6,7 @@ version: '3'
 services:
   rails:
     #image: negonicrac/rails_ci
-    build: .
+    build: dockerfiles
     volumes: {}
     ports:
       - 3000:3000
