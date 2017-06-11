@@ -1,6 +1,7 @@
 FROM ruby:2.4.1-slim
 MAINTAINER Louis T. <louis@negonicrac.com>
 
+# Install build dependencies
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
       build-essential \
       curl \
@@ -15,18 +16,21 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get install -y --no-install-recommends \
       nodejs
 
-# Install Yarn: https://yarnpkg.com/en/docs/install
+# Add Yarn repository
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
       tee /etc/apt/sources.list.d/yarn.list
+
+# Install Yarn: https://yarnpkg.com/en/docs/install
 RUN apt-get update && apt-get install -y --no-install-recommends \
       yarn
 
-# Install PhantomJS
+# Install PhantomJS dependencies
 RUN apt-get install -y --no-install-recommends \
     libfontconfig \
     libfreetype6
 
+# Install PhantomJS
 RUN curl -sL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 | tar -xj \
     && mv phantomjs-2.1.1-linux-x86_64 /opt/phantomjs-2.1.1 \
     && ln -s /opt/phantomjs-2.1.1 /opt/phantomjs \
@@ -36,6 +40,11 @@ RUN curl -sL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-lin
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     # Checking if phantom works
     && phantomjs -v
+
+# Install Nokogiri dependencies
+RUN apt-get install -y --no-install-recommends \
+    libxml2 \
+    libxslt
 
 RUN ruby -v
 RUN gem update
