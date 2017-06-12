@@ -2,8 +2,6 @@ FROM ruby:2.4.1-slim
 MAINTAINER Louis T. <louis@negonicrac.com>
 
 ENV PHANTOMJS_VERSION=2.1.1
-ARG PHANTOMJS_DOWNLOAD=phantomjs-$PHANTOMJS_VERSION-linux-x86_64
-ARG PHANTOMJS_DOWNLOAD_URL=https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOMJS_DOWNLOAD.tar.bz2
 
 RUN apt-get update \
     \
@@ -23,8 +21,8 @@ RUN apt-get update \
       libfreetype6 \
     \
     # Install PhantomJS
-    && curl -sL $PHANTOMJS_DOWNLOAD_URL | tar -xj \
-      && mv $PHANTOMJS_DOWNLOAD /opt/phantomjs-$PHANTOMJS_VERSION \
+    && curl -sL https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOMJS_DOWNLOAD.tar.bz2 | tar -xj \
+      && mv phantomjs-$PHANTOMJS_VERSION-linux-x86_64 /opt/phantomjs-$PHANTOMJS_VERSION \
       && ln -s /opt/phantomjs-$PHANTOMJS_VERSION /opt/phantomjs \
       && ln -s /opt/phantomjs/bin/phantomjs /usr/local/bin/phantomjs \
       && phantomjs -v \
