@@ -21,7 +21,7 @@ RUN apt-get update \
       libfreetype6 \
     \
     # Install PhantomJS
-    && curl -sL https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOMJS_DOWNLOAD.tar.bz2 | tar -xj \
+    && curl -sL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 | tar -xj \
       && mv phantomjs-$PHANTOMJS_VERSION-linux-x86_64 /opt/phantomjs-$PHANTOMJS_VERSION \
       && ln -s /opt/phantomjs-$PHANTOMJS_VERSION /opt/phantomjs \
       && ln -s /opt/phantomjs/bin/phantomjs /usr/local/bin/phantomjs \
@@ -36,7 +36,7 @@ RUN apt-get update \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
       && echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
         tee /etc/apt/sources.list.d/yarn.list \
-      && apt-get install -y --no-install-recommends \
+      && apt-get update && apt-get install -y --no-install-recommends \
         yarn \
     \
     # cleanup
