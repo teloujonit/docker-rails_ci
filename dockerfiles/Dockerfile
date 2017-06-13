@@ -11,6 +11,12 @@ RUN apt-get update \
       curl \
       git \
     \
+    # Install curb gem dependencies
+    && apt-get install -y --no-install-recommends \
+      libcurl3 \
+      libcurl3-gnutls \
+      libcurl4-openssl-dev \
+    \
     # Ensure communication with PostgreSQL (libpq-dev)
     && apt-get install -y --no-install-recommends \
       libpq-dev \
