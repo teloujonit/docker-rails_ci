@@ -10,6 +10,7 @@ RUN apt-get update \
       build-essential \
       curl \
       git \
+      wget \
     \
     # Install curb gem dependencies
     && apt-get install -y --no-install-recommends \
@@ -44,6 +45,9 @@ RUN apt-get update \
         tee /etc/apt/sources.list.d/yarn.list \
       && apt-get update && apt-get install -y --no-install-recommends \
         yarn \
+    \
+    # Install Heroku Toolbelt
+    && wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh \
     \
     # cleanup
     && apt-get autoremove -yqq \
