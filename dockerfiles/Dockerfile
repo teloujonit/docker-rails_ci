@@ -55,6 +55,9 @@ RUN apt-get update \
     # Install Heroku Toolbelt
     && wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh \
     \
+    # Install ssh-agent
+    && apt-get install openssh-client -y
+    \
     # cleanup
     && apt-get autoremove -yqq \
     && apt-get clean \
