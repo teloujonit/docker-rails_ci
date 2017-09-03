@@ -24,6 +24,10 @@ RUN apt-get update \
       libcurl3-gnutls \
       libcurl4-openssl-dev \
     \
+    # Install ssh-agent
+    && apt-get install -y --no-install-recommends \
+      openssh-client \
+    \
     # Ensure communication with PostgreSQL (libpq-dev)
     && apt-get install -y --no-install-recommends \
       libpq-dev \
@@ -54,9 +58,6 @@ RUN apt-get update \
     \
     # Install Heroku Toolbelt
     && wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh \
-    \
-    # Install ssh-agent
-    && apt-get install openssh-client -y
     \
     # cleanup
     && apt-get autoremove -yqq \
