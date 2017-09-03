@@ -8,6 +8,9 @@ ENV LC_ALL=C.UTF-8
 # RUN locale
 
 ENV PHANTOMJS_VERSION=2.1.1
+ENV PHANTOMJS_FOLDER=phantomjs-$PHANTOMJS_VERSION
+ENV PHANTOMJS_LINUX=$PHANTOMJS_FOLDER-linux-x86_64
+ENV PHANTOMJS_DOWNLOAD_URL=https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOMJS_LINUX.tar.bz2
 
 RUN apt-get update \
     \
@@ -38,9 +41,9 @@ RUN apt-get update \
       libfreetype6 \
     \
     # Install PhantomJS
-    && curl -sL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 | tar -xj \
-      && mv phantomjs-$PHANTOMJS_VERSION-linux-x86_64 /opt/phantomjs-$PHANTOMJS_VERSION \
-      && ln -s /opt/phantomjs-$PHANTOMJS_VERSION /opt/phantomjs \
+    && curl -sL $PHANTOMJS_DOWNLOAD_URL | tar -xj \
+      && mv $PHANTOMJS_LINUX /opt/$PHANTOMJS_FOLDER \
+      && ln -s /opt/$PHANTOMJS_FOLDER /opt/phantomjs \
       && ln -s /opt/phantomjs/bin/phantomjs /usr/local/bin/phantomjs \
       && phantomjs -v \
     \
