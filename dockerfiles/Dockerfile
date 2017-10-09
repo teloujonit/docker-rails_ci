@@ -69,7 +69,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     \
     # Install deployment tools
-    && gem install dpl
+    && gem install dpl \
+    && gem install bundler --pre
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
