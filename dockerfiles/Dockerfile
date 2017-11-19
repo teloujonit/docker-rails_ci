@@ -1,11 +1,9 @@
 FROM ruby:2.4.2-slim
 MAINTAINER Louis Taylor <louis@negonicrac.com>
 
-# Setup locales (fixes encoding issues)
 ENV LANG=C.UTF-8
 ENV LANGUAGE=C.UTF-8
 ENV LC_ALL=C.UTF-8
-# RUN locale
 
 ENV PHANTOMJS_VERSION=2.1.1
 ENV PHANTOMJS_FOLDER=phantomjs-$PHANTOMJS_VERSION
