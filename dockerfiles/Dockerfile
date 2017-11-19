@@ -1,5 +1,5 @@
-FROM ruby:2.4.1-slim
-MAINTAINER Louis T. <louis@negonicrac.com>
+FROM ruby:2.4.2-slim
+MAINTAINER Louis Taylor <louis@negonicrac.com>
 
 # Setup locales (fixes encoding issues)
 ENV LANG=C.UTF-8
