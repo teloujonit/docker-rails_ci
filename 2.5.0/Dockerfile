@@ -10,11 +10,15 @@ ENV PHANTOMJS_FOLDER=phantomjs-$PHANTOMJS_VERSION
 ENV PHANTOMJS_LINUX=$PHANTOMJS_FOLDER-linux-x86_64
 ENV PHANTOMJS_DOWNLOAD_URL=https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOMJS_LINUX.tar.bz2
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update \
 \
 # Install build dependencies
+&& apt-get install -y --no-install-recommends apt-utils \
+\
 && apt-get install -y --no-install-recommends \
-  build-essential curl grep git wget \
+  build-essential curl grep git wget gnupg \
 \
 # Install ssh-agent
 && apt-get install -y --no-install-recommends openssh-client \
