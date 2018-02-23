@@ -53,8 +53,7 @@ RUN apt-get update \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 \
 # Install deployment tools
-&& gem install dpl \
-&& gem install bundler --pre
+&& gem install dpl
 
 COPY entrypoint.sh /docker-entrypoint
 ENTRYPOINT ["/docker-entrypoint"]
