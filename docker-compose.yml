@@ -1,29 +1,30 @@
 #
 # Example rails setup
 ##
-version: '3'
+version:                 '3'
 
 services:
-  rails:
-    #image: negonicrac/rails_ci
-    build: dockerfiles
-    volumes: {}
+  app:
+    #image:              teloujonit/rails_ci
+    build:
+      context:           ./2.5.0
+    volumes:             {}
     ports:
       - 3000:3000
     volumes:
       - ~/code/app:/app
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER:     postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_HOST: postgres
+      POSTGRES_HOST:     postgres
 
   postgres:
-      image: postgres:latest
-      environment: {}
+      image:             postgres:latest
+      environment:       {}
       volumes:
         - postgres:/var/lib/postgresql/data
 
 volumes:
-  postgres: {}
+  postgres:              {}
 
-networks: {}
+networks:                {}

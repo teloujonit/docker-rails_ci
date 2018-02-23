@@ -70,5 +70,5 @@ RUN apt-get update \
     && gem install dpl \
     && gem install bundler --pre
 
-COPY entrypoint.sh /docker-entrypoint
-ENTRYPOINT ["/docker-entrypoint"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
