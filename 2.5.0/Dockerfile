@@ -59,5 +59,5 @@ RUN apt-get update \
 # Install deployment tools
 && gem install dpl
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+COPY docker-entrypoint.sh /docker-entrypoint
+ENTRYPOINT ["/docker-entrypoint"]
