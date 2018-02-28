@@ -26,6 +26,12 @@ RUN apt-get update \
 # Ensure communication with PostgreSQL (libpq-dev)
 && apt-get install -y --no-install-recommends libpq-dev \
 \
+# Nokogiri
+&& apt-get install -y libxml2-dev libxslt1-dev \
+\
+# Capybara Webkit
+&& apt-get install -y libqtwebkit4 libqt4-dev xvfb \
+\
 # Install PhantomJS dependencies
 && apt-get install -y --no-install-recommends \
   libfontconfig libfreetype6 \
