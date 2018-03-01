@@ -15,69 +15,73 @@
 
 CommitMsg:
   CapitalizedSubject:
-    enabled:           true
+    enabled:             true
 
   EmptyMessage:
-    enabled:           true
+    enabled:             true
 
   TrailingPeriod:
-    enabled:           true
+    enabled:             true
 
   TextWidth:
-    enabled:           true
+    enabled:             true
 
 PreCommit:
   ALL:
-    on_warn:           'fail'
+    on_warn:             'fail'
 
   AuthorEmail:
-    enabled:           true
+    enabled:             true
 
   AuthorName:
-    enabled:           true
+    enabled:             true
 
   MergeConflicts:
-    enabled:           true
+    enabled:             true
 
   YamlSyntax:
-    enabled:           true
+    enabled:             true
 
   YamlLint:
-    enabled:           false
+    enabled:             false
 
   TrailingWhitespace:
-    enabled:           true
-    exclude:           {}
+    enabled:             true
 
   ForbiddenBranches:
-    enabled:           true
+    enabled:             true
     branch_patterns:
       - 'master'
 
   ShellCheck:
-    enabled:           true
+    enabled:             true
 
 
 PostCheckout:
   IndexTags:
-    enabled:           true
+    enabled:             true
 
 PostCommit:
   IndexTags:
-    enabled:           true
+    enabled:             true
 
 PostMerge:
   IndexTags:
-    enabled:           true
+    enabled:             true
 
 PostRewrite:
   IndexTags:
-    enabled:           true
+    enabled:             true
 
 PrePush:
+  GitLfs:
+    enabled:             true
+    required_executable: 'git-lfs'
+    flags:               ['pre-push']
+
   ProtectedBranches:
-    enabled:           true
+    enabled:             true
     branch_patterns:
       - 'master'
 
-PreRebase:             {}
+PreRebase:               {}
