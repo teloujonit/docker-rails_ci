@@ -5,13 +5,21 @@ ENV APP_ROOT /usr/src/app
 
 RUN \
 	apk add --no-cache --update --upgrade --virtual .railsdeps \
-		# BUILD_PACKAGES
-		build-base git \
-		# DEV_PACKAGES
-		bzip2-dev libgcrypt-dev libxml2-dev libxslt-dev libressl-dev \
-		postgresql-dev sqlite-dev zlib-dev\
-		# RAILS_DEPS
-		ca-certificates yarn tzdata \
+		build-base \
+		git \
+		\
+		bzip2-dev \
+		libgcrypt-dev \
+		libxml2-dev \
+		libxslt-dev \
+		libressl-dev \
+		postgresql-dev \
+		sqlite-dev \
+		zlib-dev\
+		\
+		ca-certificates \
+		tzdata \
+		yarn \
 	&& bundle config --global build.nokogiri  "--use-system-libraries" \
 	&& bundle config --global build.nokogumbo "--use-system-libraries" \
 	&& yarn global add heroku \
