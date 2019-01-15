@@ -14,7 +14,7 @@ RUN \
 		ca-certificates yarn tzdata \
 	&& bundle config --global build.nokogiri  "--use-system-libraries" \
 	&& bundle config --global build.nokogumbo "--use-system-libraries" \
-	&& yarn global add heroku-cli \
+	&& yarn global add heroku \
 	&& find / -type f -iname \*.apk-new -delete \
 	&& rm -rf /var/cache/apk/* \
 	&& rm -rf /usr/lib/lib/ruby/gems/*/cache/* \
