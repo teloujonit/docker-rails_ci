@@ -20,6 +20,8 @@ RUN \
 		ca-certificates \
 		tzdata \
 		yarn \
+		\
+		openssh \
 	&& bundle config --global build.nokogiri  "--use-system-libraries" \
 	&& bundle config --global build.nokogumbo "--use-system-libraries" \
 	&& yarn global add heroku \
