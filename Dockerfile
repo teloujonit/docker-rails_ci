@@ -22,6 +22,7 @@ RUN \
 		yarn \
 		\
 		openssh \
+		curl \
 	&& bundle config --global build.nokogiri  "--use-system-libraries" \
 	&& bundle config --global build.nokogumbo "--use-system-libraries" \
 	&& yarn global add heroku \
