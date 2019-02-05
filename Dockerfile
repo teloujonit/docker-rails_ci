@@ -1,4 +1,4 @@
-FROM ruby:2.6.0-alpine3.8
+FROM ruby:2.6.1-alpine3.9
 MAINTAINER Louis Taylor <louis@negonicrac.com>
 
 ENV APP_ROOT /usr/src/app
@@ -12,7 +12,7 @@ RUN \
 		libgcrypt-dev \
 		libxml2-dev \
 		libxslt-dev \
-		libressl-dev \
+		# libressl-dev \
 		postgresql-dev \
 		sqlite-dev \
 		zlib-dev\
@@ -22,7 +22,6 @@ RUN \
 		yarn \
 		\
 		openssh \
-		curl-dev \
 	&& bundle config --global build.nokogiri  "--use-system-libraries" \
 	&& bundle config --global build.nokogumbo "--use-system-libraries" \
 	&& yarn global add heroku \

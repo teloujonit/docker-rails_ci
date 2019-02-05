@@ -58,7 +58,8 @@ PreCommit:
       - '2.5.0-stretch'
       - '2.5.1-alpine3.7'
       - '2.5.1-stretch'
-      # - '2.6.0-alpine3.8'
+      - '2.6.0-alpine3.8'
+      # - '2.6.1-alpine3.9'
 
   ShellCheck:
     enabled:             true
@@ -96,6 +97,7 @@ PrePush:
       - '2.5.0-stretch'
       - '2.5.1-alpine3.7'
       - '2.5.1-stretch'
-      # - '2.6.0-alpine3.8'
+      - '2.6.0-alpine3.8'
+      # - '2.6.1-alpine3.9'
 
 PreRebase:               {}
