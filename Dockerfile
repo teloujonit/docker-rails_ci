@@ -30,6 +30,7 @@ RUN \
 	&& rm -rf /var/cache/apk/* \
 	&& rm -rf /usr/lib/lib/ruby/gems/*/cache/* \
 	&& mkdir -p $APP_ROOT \
-	&& gem install dpl
+	&& gem install dpl \
+	&& gem install nio4r -v '2.5.1'
 
 WORKDIR $APP_ROOT
