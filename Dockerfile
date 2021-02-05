@@ -1,4 +1,4 @@
-FROM ruby:2.6.1-alpine3.9
+FROM ruby:3.0.0-alpine3.13
 MAINTAINER Louis Taylor <louis@negonicrac.com>
 
 ENV APP_ROOT /usr/src/app

@@ -59,7 +59,8 @@ PreCommit:
       - '2.5.1-alpine3.7'
       - '2.5.1-stretch'
       - '2.6.0-alpine3.8'
-      # - '2.6.1-alpine3.9'
+      - '2.6.1-alpine3.9'
+      # - '3.0.0-alpine3.13'
 
   ShellCheck:
     enabled:             true
@@ -67,19 +68,19 @@ PreCommit:
 
 PostCheckout:
   IndexTags:
-    enabled:             true
+    enabled:             false
 
 PostCommit:
   IndexTags:
-    enabled:             true
+    enabled:             false
 
 PostMerge:
   IndexTags:
-    enabled:             true
+    enabled:             false
 
 PostRewrite:
   IndexTags:
-    enabled:             true
+    enabled:             false
 
 PrePush:
   GitLfs:
@@ -98,6 +99,7 @@ PrePush:
       - '2.5.1-alpine3.7'
       - '2.5.1-stretch'
       - '2.6.0-alpine3.8'
-      # - '2.6.1-alpine3.9'
+      - '2.6.1-alpine3.9'
+      # - '3.0.0-alpine3.13'
 
 PreRebase:               {}
