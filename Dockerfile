@@ -1,4 +1,4 @@
-FROM ruby:3.0.0-alpine3.13
+FROM ruby:2.7.6-alpine3.16
 MAINTAINER Louis Taylor <louis@negonicrac.com>
 
 ENV APP_ROOT /usr/src/app
@@ -22,9 +22,14 @@ RUN \
 		yarn \
 		\
 		openssh \
-	&& bundle config --global build.nokogiri  "--use-system-libraries" \
+		\
+		curl \
+		bash
+
+RUN curl https://cli-assets.heroku.com/install.sh | sh
+
+RUN bundle config --global build.nokogiri  "--use-system-libraries" \
 	&& bundle config --global build.nokogumbo "--use-system-libraries" \
-	&& yarn global add heroku \
 	&& find / -type f -iname \*.apk-new -delete \
 	&& rm -rf /var/cache/apk/* \
 	&& rm -rf /usr/lib/lib/ruby/gems/*/cache/* \
