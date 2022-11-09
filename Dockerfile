@@ -1,5 +1,5 @@
-FROM ruby:2.7.6-alpine3.16
-MAINTAINER Louis Taylor <louis@negonicrac.com>
+FROM ruby:3.1.2-alpine3.16
+MAINTAINER Louis Taylor <lt@teloujon.com>
 
 ENV APP_ROOT /usr/src/app
 

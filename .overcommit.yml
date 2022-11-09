@@ -52,16 +52,13 @@ PreCommit:
     enabled:             true
     branch_patterns:
       - 'master'
-      - '2.4.1-stretch'
-      - '2.4.2-stretch'
       - '2.5.0-alpine3.7'
-      - '2.5.0-stretch'
       - '2.5.1-alpine3.7'
       - '2.5.1-stretch'
       - '2.6.0-alpine3.8'
       - '2.6.1-alpine3.9'
-      - '3.0.0-alpine3.13'
-      # - '2.7.6-alpine3.16'
+      - '2.7.6-alpine3.16'
+      # - '3.1.2-alpine3.16'
 
   ShellCheck:
     enabled:             true
@@ -93,15 +90,12 @@ PrePush:
     enabled:             true
     branch_patterns:
       - 'master'
-      - '2.4.1-stretch'
-      - '2.4.2-stretch'
       - '2.5.0-alpine3.7'
-      - '2.5.0-stretch'
       - '2.5.1-alpine3.7'
       - '2.5.1-stretch'
       - '2.6.0-alpine3.8'
       - '2.6.1-alpine3.9'
-      - '3.0.0-alpine3.13'
-      # - '2.7.6-alpine3.16'
+      - '2.7.6-alpine3.16'
+      # - '3.1.2-alpine3.16'
 
 PreRebase:               {}
